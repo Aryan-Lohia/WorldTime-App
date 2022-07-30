@@ -16,5 +16,4 @@ Future setpreferences() async
   prefs.setString("area", defaultarea);
   prefs.setString("notify", defaultnotify);
   prefs.setBool("announce", defaultannounce);
-  print("saved");
 }
