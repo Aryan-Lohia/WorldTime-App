@@ -47,10 +47,8 @@ class NotificationsController {
     notiftimer?.cancel();
     notiftimerobj?.cancel();
     if (defaultnotify == "Never") {
-      print("object");
       notiftimer = null;
     } else {
-      print("done");
       showsilentnotifs();
       notiftimer = Timer.periodic(
           Duration(minutes: int.parse(defaultnotify.split(" ")[1])), (Timer t) {
