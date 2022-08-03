@@ -35,141 +35,141 @@ class _SettingsScreenState extends State<SettingsScreen> {
           backgroundColor: Colors.black54,
         ),
         body: SingleChildScrollView(
-          child: Container(
-              child: Column(
+          child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Container(
-                padding: const EdgeInsets.fromLTRB(10, 15, 0, 10),
-                height: 50,
-                child: Text(
-                  "Default Location : $defaultarea",
+          Container(
+            padding: const EdgeInsets.fromLTRB(10, 15, 0, 10),
+            height: 50,
+            child: Text(
+              "Default Location : $defaultarea",
+              style: const TextStyle(fontSize: 20, fontFamily: "myfont"),
+            ),
+          ),
+          const Divider(
+            height: 10,
+          ),
+          Container(
+            padding: const EdgeInsets.fromLTRB(10, 5, 0, 10),
+            height: 50,
+            child: Row(
+              children: [
+                const Text(
+                  "Notify : ",
+                  style: TextStyle(fontSize: 20, fontFamily: "myfont"),
+                ),
+                PopupMenuButton(
+                    position: PopupMenuPosition.under,
+                    padding: EdgeInsets.zero,
+                    initialValue: notifyValue,
+                    onSelected: (value) => {
+                          setState(() {
+                            notifyValue = value.toString();
+                            defaultnotify = notifyValue;
+                            setpreferences();
+                            notifs.shownotifs();
+                          })
+                        },
+                    itemBuilder: (context) => <PopupMenuItem<String>>[
+                          PopupMenuItem<String>(
+                              value: timings[0],
+                              child: Text(
+                                timings[0],
+                                style: TextStyle(fontFamily: "myfont"),
+                              )),
+                          PopupMenuItem<String>(
+                              value: timings[1],
+                              child: Text(
+                                timings[1],
+                                style: TextStyle(fontFamily: "myfont"),
+                              )),
+                          PopupMenuItem<String>(
+                              value: timings[2],
+                              child: Text(
+                                timings[2],
+                                style: TextStyle(fontFamily: "myfont"),
+                              )),
+                          PopupMenuItem<String>(
+                              value: timings[3],
+                              child: Text(
+                                timings[3],
+                                style: TextStyle(fontFamily: "myfont"),
+                              )),
+                          PopupMenuItem<String>(
+                              value: timings[4],
+                              child: Text(
+                                timings[4],
+                                style: TextStyle(fontFamily: "myfont"),
+                              )),
+                        ],
+                    child: Row(
+                      children: [
+                        Text(
+                          notifyValue,
+                          style: const TextStyle(
+                              fontSize: 20, fontFamily: "myfont"),
+                        ),
+                        const Icon(Icons.arrow_drop_down)
+                      ],
+                    ))
+              ],
+            ),
+          ),
+          const Divider(
+            height: 10,
+          ),
+          Container(
+            padding: const EdgeInsets.fromLTRB(10, 5, 0, 10),
+            height: 50,
+            child: const Text("Add Task: ",
+                style: TextStyle(fontSize: 20, fontFamily: "myfont")),
+          ),
+          Container(
+              padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+              color: Colors.cyan[200],
+              child: TextField(
+                  controller: TextEditingController(text: defaulttasks),
+                  maxLines: null,
                   style: const TextStyle(fontSize: 20, fontFamily: "myfont"),
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                  ),
+                  onChanged: (text) {
+                    defaulttasks = text;
+                    setpreferences();
+                  })),
+          const Divider(
+            height: 10,
+          ),
+          Container(
+            padding: const EdgeInsets.fromLTRB(10, 5, 0, 10),
+            height: 50,
+            child: Row(
+              children: [
+                const Text(
+                  "Announce time  ",
+                  style: TextStyle(fontSize: 20, fontFamily: "myfont"),
                 ),
-              ),
-              const Divider(
-                height: 10,
-              ),
-              Container(
-                padding: const EdgeInsets.fromLTRB(10, 5, 0, 10),
-                height: 50,
-                child: Row(
-                  children: [
-                    const Text(
-                      "Notify : ",
-                      style: TextStyle(fontSize: 20, fontFamily: "myfont"),
-                    ),
-                    PopupMenuButton(
-                        position: PopupMenuPosition.under,
-                        padding: EdgeInsets.zero,
-                        initialValue: notifyValue,
-                        onSelected: (value) => {
-                              setState(() {
-                                notifyValue = value.toString();
-                                defaultnotify = notifyValue;
-                                setpreferences();
-                                notifs.shownotifs();
-                              })
-                            },
-                        itemBuilder: (context) => <PopupMenuItem<String>>[
-                              PopupMenuItem<String>(
-                                  value: timings[0],
-                                  child: Text(
-                                    timings[0],
-                                    style: TextStyle(fontFamily: "myfont"),
-                                  )),
-                              PopupMenuItem<String>(
-                                  value: timings[1],
-                                  child: Text(
-                                    timings[1],
-                                    style: TextStyle(fontFamily: "myfont"),
-                                  )),
-                              PopupMenuItem<String>(
-                                  value: timings[2],
-                                  child: Text(
-                                    timings[2],
-                                    style: TextStyle(fontFamily: "myfont"),
-                                  )),
-                              PopupMenuItem<String>(
-                                  value: timings[3],
-                                  child: Text(
-                                    timings[3],
-                                    style: TextStyle(fontFamily: "myfont"),
-                                  )),
-                              PopupMenuItem<String>(
-                                  value: timings[4],
-                                  child: Text(
-                                    timings[4],
-                                    style: TextStyle(fontFamily: "myfont"),
-                                  )),
-                            ],
-                        child: Row(
-                          children: [
-                            Text(
-                              notifyValue,
-                              style: const TextStyle(
-                                  fontSize: 20, fontFamily: "myfont"),
-                            ),
-                            const Icon(Icons.arrow_drop_down)
-                          ],
-                        ))
-                  ],
-                ),
-              ),
-              const Divider(
-                height: 10,
-              ),
-              Container(
-                padding: const EdgeInsets.fromLTRB(10, 5, 0, 10),
-                height: 50,
-                child: const Text("Add Task: ",
-                    style: TextStyle(fontSize: 20, fontFamily: "myfont")),
-              ),
-              Container(
-                  padding: const EdgeInsets.fromLTRB(10, 5, 10, 10),
-                  color: Colors.white,
-                  child: TextField(
-                      controller: TextEditingController(text: defaulttasks),
-                      maxLines: null,
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                      ),
-                      onChanged: (text) {
-                        defaulttasks = text;
-                        setpreferences();
-                      })),
-              const Divider(
-                height: 10,
-              ),
-              Container(
-                padding: const EdgeInsets.fromLTRB(10, 5, 0, 10),
-                height: 50,
-                child: Row(
-                  children: [
-                    const Text(
-                      "Announce time  ",
-                      style: TextStyle(fontSize: 20, fontFamily: "myfont"),
-                    ),
-                    FlutterSwitch(
-                      value: announceValue,
-                      onToggle: (val) {
-                        setState(() {
-                          announceValue = val;
-                        });
-                        defaultannounce = announceValue;
-                        setpreferences();
-                      },
-                      width: 50,
-                      height: 25,
-                    )
-                  ],
-                ),
-              ),
-              const Divider(
-                height: 10,
-              ),
+                FlutterSwitch(
+                  value: announceValue,
+                  onToggle: (val) {
+                    setState(() {
+                      announceValue = val;
+                    });
+                    defaultannounce = announceValue;
+                    setpreferences();
+                  },
+                  width: 50,
+                  height: 25,
+                )
+              ],
+            ),
+          ),
+          const Divider(
+            height: 10,
+          ),
             ],
-          )),
+          ),
         ));
   }
 }
