@@ -1,5 +1,6 @@
 # WorldTime-App
 A flutter app that shows time from all timezones using an api and also sends regular time notifications and announcements.\
+Also announces tasks assigned by the user with every notification.\
 \
 This app implements flutter and material design to display time from various timezones using the API https://timeapi.io/ \
 
