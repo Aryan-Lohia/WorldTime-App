@@ -1,4 +1,3 @@
-//TODO: fonts
 import 'dart:async';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:intl/intl.dart';
@@ -23,17 +22,22 @@ class NotificationsController {
     const AndroidNotificationDetails androidPlatformChannelSpecifics =
         AndroidNotificationDetails('silent channel id', 'silent channel name',
             channelDescription: 'silent channel description',
-            timeoutAfter: 5000,
+            timeoutAfter: 8000,
             priority: Priority.high,
             importance: Importance.max,
             styleInformation: DefaultStyleInformation(true, true));
     const NotificationDetails platformChannelSpecifics =
         NotificationDetails(android: androidPlatformChannelSpecifics);
     if (defaultannounce == true) {
-      tts.speak('The time is $currenttime');
+      tts.speak('The time is $currenttime .'
+          'Tasks are $defaulttasks');
     }
     await flutterLocalNotificationsPlugin.show(
-        0, 'Time', 'The time is $currenttime', platformChannelSpecifics);
+        0,
+        'Time',
+        '''The time is $currenttime 
+        Tasks are $defaulttasks''',
+        platformChannelSpecifics);
   }
 
   void showsilentnotifs() async {
