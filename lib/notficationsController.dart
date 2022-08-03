@@ -28,15 +28,21 @@ class NotificationsController {
             styleInformation: DefaultStyleInformation(true, true));
     const NotificationDetails platformChannelSpecifics =
         NotificationDetails(android: androidPlatformChannelSpecifics);
+    String message="";
+    if (defaulttasks.length!=0) {
+      message='The time is $currenttime. Tasks are $defaulttasks';
+    }
+    else
+      {
+        message='The time is $currenttime.';
+      }
     if (defaultannounce == true) {
-      tts.speak('The time is $currenttime .'
-          'Tasks are $defaulttasks');
+      tts.speak(message);
     }
     await flutterLocalNotificationsPlugin.show(
         0,
         'Time',
-        '''The time is $currenttime 
-        Tasks are $defaulttasks''',
+        message,
         platformChannelSpecifics);
   }
 
